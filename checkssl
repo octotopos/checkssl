@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Created by: octotopos <octotopos@outlook.com> =]
+# License: The Unlicense <www.theunlincense.org>
+#
+# How to execute: chmod +x checkssl ; ./checkssl <IP> <port>
+#
+# Variables declaration
+
+host=$1
+sslport=$2
+
+# Begin of the code
+
+function testinput {
+  clear
+  if [ -z "$host" ]; then
+    errormessage
+    exit
+  fi
+
+  if [ -z "$sslport" ]; then
+    errormessage 
+    exit
+  fi
+}
+
+function errormessage {
+  printf "\n \n"
+  printf "Wrong syntax! Please inform the host and port as follows: \n \n"
+  printf "Correct syntax: ./checkssl 10.192.168.37 443 [ENTER] \n \n"
+  printf "            or: ./checkssl google.com 443 [ENTER] \n \n \n"
+  sleep 3
+}
+
+function executecheck {
+  printf "\n \n \n"
+  printf "Press CONTROL + C to leave. \n"
+  sleep 2
+  printf "\n \n \n"
+  openssl s_client -connect "$host":"$sslport"
+  exit
+}
+
+testinput
+executecheck
