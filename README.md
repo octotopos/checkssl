@@ -1,2 +1,3 @@
 # checkssl
-Script to test SSL certificate via command line
+
+** Script to test SSL certificate via command line
